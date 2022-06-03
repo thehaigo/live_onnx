@@ -1,0 +1,35 @@
+<div class="columns">
+  <aside class="column is-2 menu">
+    <p class="menu-label">Actions</p>
+    <dl class="menu-list">
+      <dt><button class="button is-fullwidth" phx-click="detect">Detect</button></dt>      
+    </dl>
+    <%= for {ans, index} <- Enum.with_index(@ans) do %>
+      <h5><%= "#{index + 1}: " <> Map.get(@list, to_string(ans)) %></h5>
+    <% end %>
+  </aside>
+
+  <div class="column is-10" >
+    <div class="columns is-centered">
+      <div style={ if @upload_file != nil, do: "display:none" }>
+      <form phx-change="validate" >
+          <div class="file is-boxed" phx-drop-target={ @uploads.image.ref }>
+            <label class="file-label">
+              <%= live_file_input @uploads.image, class: "file-input" %>
+              <input class="file-input" type="file" name="resume">
+              <span class="file-cta">
+                <span class="file-label p-6">
+                  Choose a file…
+                </span>
+              </span>
+            </label>
+          </div>
+      </form>
+      </div>
+      <%= if @upload_file do %>
+        <div><img alt="" class="w-full" src={"data:image/png;base64,#{Base.encode64(@upload_file)}"}/></div>
+      <% end %>
+    </div>
+  </div>
+</div>
+ 
