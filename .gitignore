@@ -35,3 +35,4 @@ npm-debug.log
 .DS_Store
 .cache
 model/*/model.*
+model/*/model_fail.onnx
