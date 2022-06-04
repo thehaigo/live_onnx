@@ -18,6 +18,7 @@ defmodule LiveOnnxWeb.Router do
     pipe_through :browser
 
     live "/", PageLive
+    live "/:id", PageLive
   end
 
   # Other scopes may use custom stacks.
