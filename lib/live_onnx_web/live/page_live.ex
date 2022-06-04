@@ -44,6 +44,12 @@ defmodule LiveOnnxWeb.PageLive do
     {:noreply, assign_model(socket, model, params, "convnext")}
   end
 
+  def handle_params(%{"id" => "resnet18"}, _action, socket) do
+    {model, params} = AxonOnnx.import("model/resnet18/model.onnx")
+
+    {:noreply, assign_model(socket, model, params, "resnet18")}
+  end
+
   def handle_params(%{}, _action, socket) do
     {:noreply, assign(socket, model_name: "None")}
   end
