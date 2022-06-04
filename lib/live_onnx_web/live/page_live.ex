@@ -38,16 +38,17 @@ defmodule LiveOnnxWeb.PageLive do
     {:noreply, assign_model(socket, model, params, "vgg16")}
   end
 
-  def handle_params(%{"id" => "convnext"}, _action, socket) do
-    {model, params} = AxonOnnx.import("model/convnext/model.onnx")
+  def handle_params(%{"id" => "alexnet"}, _action, socket) do
+    {:ok, dets} = :dets.open_file('model/alexnet/model.dets')
+    [{1, {model, params}}] = :dets.lookup(dets, 1)
 
-    {:noreply, assign_model(socket, model, params, "convnext")}
+    {:noreply, assign_model(socket, model, params, "alexnet")}
   end
 
-  def handle_params(%{"id" => "resnet18"}, _action, socket) do
-    {model, params} = AxonOnnx.import("model/resnet18/model.onnx")
+  def handle_params(%{"id" => model_name}, _action, socket) do
+    {model, params} = AxonOnnx.import("model/#{model_name}/model.onnx")
 
-    {:noreply, assign_model(socket, model, params, "resnet18")}
+    {:noreply, assign_model(socket, model, params, model_name)}
   end
 
   def handle_params(%{}, _action, socket) do

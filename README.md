@@ -20,6 +20,7 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 ## supportted model
 
 ResNet18
+AlexNet
 Vgg16 
 ConvNext
 

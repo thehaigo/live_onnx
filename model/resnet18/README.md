@@ -1,5 +1,5 @@
-## convnext.onnx export 
-export from torchvision convnext_base
+## resnet18.onnx export 
+export from torchvision resnet18
 
 ```
 pip install torch torchvision
