@@ -1,8 +1,17 @@
 <div class="columns">
   <aside class="column is-2 menu">
     <p class="menu-label">Actions</p>
+    <form phx-change="selected">
+      <select name="model", id="model">
+        <option value="">None</option>
+        <%= for model <- @enable_model do %>
+          <option value={model} selected={model == @model_name} ><%= model %></option>
+        <% end %>
+      </select>
+    </form>
     <dl class="menu-list">
-      <dt><button class="button is-fullwidth" phx-click="detect">Detect</button></dt>      
+      <dt><button class="button is-fullwidth" phx-click="detect">Detect</button></dt>
+      <dt><button class="button is-fullwidth" phx-click="clear">Clear</button></dt>
     </dl>
     <%= for {ans, index} <- Enum.with_index(@ans) do %>
       <h5><%= "#{index + 1}: " <> Map.get(@list, to_string(ans)) %></h5>
