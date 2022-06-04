@@ -21,6 +21,7 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
 ResNet18
 AlexNet
+SqueezeNet
 Vgg16 
 ConvNext
 
