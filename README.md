@@ -19,16 +19,17 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
 ## supportted model
 
-ResNet18
-AlexNet
-SqueezeNet
-Vgg16 
-ConvNext
+* ResNet18
+* AlexNet
+* SqueezeNet
+* Vgg16 
+* ConvNext
 
 ## unsupportted model
-densenet -> unsupported "Pad" 2022/06/05
-inception -> unsupported "Pad" 2022/06/05
-shufflenet -> unable to build model from ONNX graph, expected value onnx::Conv_378 to be a graph input, but it was not present in built graphs 2022/06/05
+
+* densenet -> unsupported "Pad" 2022/06/05
+* inception -> unsupported "Pad" 2022/06/05
+* shufflenet -> unable to build model from ONNX graph, expected value onnx::Conv_378 to be a graph input, but it was not present in built graphs 2022/06/05
 
 ## export onnx proccess 
 see model/model_name directory
