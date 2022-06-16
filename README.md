@@ -3,7 +3,7 @@
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
-  * get supportted onnx model
+  * get supported onnx model
   * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
@@ -14,7 +14,7 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
 https://user-images.githubusercontent.com/91950/172017672-ad98402d-93a7-4d7a-9e94-b69eebc1cea2.mp4
 
-## supportted model
+## supported model
 
 * ResNet18
 * AlexNet
@@ -22,7 +22,7 @@ https://user-images.githubusercontent.com/91950/172017672-ad98402d-93a7-4d7a-9e9
 * Vgg16 
 * ConvNext
 
-## unsupportted model
+## unsupported model
 
 * densenet -> unsupported "Pad" 2022/06/05
 * inception -> unsupported "Pad" 2022/06/05
