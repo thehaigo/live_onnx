@@ -1,5 +1,10 @@
 # LiveOnnx
 
+Requirements:
+
+  * GPU-equipped machine (for run EXLA)
+  * Elixir installed
+ 
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
