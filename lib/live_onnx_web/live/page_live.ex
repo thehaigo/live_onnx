@@ -69,23 +69,25 @@ defmodule LiveOnnxWeb.PageLive do
       end)
       |> List.first()
 
-    {:ok, image} = StbImage.from_binary(upload_file)
+    tensor = build_tensor(upload_file)
+    {:noreply, assign(socket, upload_file: upload_file, tensor: tensor)}
+  end
+
+  defp build_tensor(data) do
+    {:ok, image} = StbImage.from_binary(data)
     {:ok, image} = StbImage.resize(image, 224, 224)
+    nx_image = StbImage.to_nx(image)
+    nx_channels = Nx.axis_size(nx_image, 2)
 
-    tensor =
-      StbImage.to_nx(image)
-      |> Nx.divide(255)
-      |> Nx.subtract(Nx.tensor([0.485, 0.456, 0.406]))
-      |> Nx.divide(Nx.tensor([0.229, 0.224, 0.225]))
-      |> Nx.transpose()
-      |> Nx.new_axis(0)
-
-    {
-      :noreply,
-      socket
-      |> assign(:upload_file, upload_file)
-      |> assign(:tensor, tensor)
-    }
+    case nx_channels do
+      3 -> nx_image
+      4 -> Nx.slice(nx_image, [0, 0, 0], [224, 224, 3])
+    end
+    |> Nx.divide(255)
+    |> Nx.subtract(Nx.tensor([0.485, 0.456, 0.406]))
+    |> Nx.divide(Nx.tensor([0.229, 0.224, 0.225]))
+    |> Nx.transpose()
+    |> Nx.new_axis(0)
   end
 
   @impl true
