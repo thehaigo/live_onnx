@@ -51,6 +51,9 @@ defmodule LiveOnnx.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:axon_onnx, github: "elixir-nx/axon_onnx"},
       {:stb_image, "~> 0.4.0"},
+      {:exla, "~> 0.3.0-dev", github: "elixir-nx/nx", sparse: "exla"},
+      {:nx, "~> 0.3.0-dev",
+       [env: :prod, git: "https://github.com/elixir-nx/nx.git", sparse: "nx", override: true]}
     ]
   end
 
@@ -66,7 +69,11 @@ defmodule LiveOnnx.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.deploy": ["cmd --cd assets npm run deploy", "esbuild default --minify", "phx.digest"]
+      "assets.deploy": [
+        "cmd --cd assets npm run deploy",
+        "esbuild default --minify",
+        "phx.digest"
+      ]
     ]
   end
 end

@@ -7,6 +7,9 @@
 # General application configuration
 import Config
 
+config :nx, :default_backend, EXLA.Backend
+config :nx, :default_defn_options, compiler: EXLA
+
 # Configures the endpoint
 config :live_onnx, LiveOnnxWeb.Endpoint,
   url: [host: "localhost"],

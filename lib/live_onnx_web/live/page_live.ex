@@ -1,7 +1,6 @@
 defmodule LiveOnnxWeb.PageLive do
   use LiveOnnxWeb, :live_view
   require Axon
-  EXLA.set_as_nx_default([:tpu, :cuda, :rocm, :host])
 
   @impl true
   def mount(params, _session, socket) do
