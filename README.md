@@ -2,7 +2,6 @@
 
 Requirements:
 
-  * GPU-equipped machine (for run EXLA)
   * Elixir installed
  
 To start your Phoenix server:
